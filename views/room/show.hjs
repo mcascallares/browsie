@@ -3,9 +3,23 @@
   <head>
     <title>{{ title }}</title>
     <link rel='stylesheet' href='/stylesheets/style.css' />
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="/javascripts/jquery-1.9.1.min.js"></script>
+    <script src="/javascripts/room.js"></script>
+
+    <script type="text/javascript">
+    $(document).ready(function() {
+    	var room = Room('{{ roomId }}');
+	});
+	</script>
   </head>
   <body>
-    <h1>Welcome to your room</h1>
-    <p>You and other {{ userCount }} are browsing</p>
+    <h1>Just browse ;)</h1>
+    <div>
+    	<input type="text" id="url" />
+    	<input type="button" id="go" value="Go!" />
+    </div>
+
+    <iframe id="target" src="" style="width:100%; height:500px"></iframe>
   </body>
 </html>
