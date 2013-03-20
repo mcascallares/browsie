@@ -3,7 +3,7 @@ Description
 
 It is just an excuse to play a bit with node.js, socket.io and express framework.
 
-The idea is to allow, like a chat room environemnt, where you can browse at the same time
+The idea is to allow you, like a chat room environemnt, to browse at the same time
 with others users. Everytime a user browses a new URL is updated in all the clients
 connected to that room.
 
