@@ -1,14 +1,12 @@
-var redis = require('redis-url').connect();
+var db = require("../db");
 var uuid = require('node-uuid');
 
-var toRedisKey = function(roomId) {
-  return "room." + roomId;
-}
 
+var type = "room";
 
 exports.create = function(req, res) {
   var roomId = uuid.v4();
-  redis.hmset(toRedisKey(roomId), {
+  db.redis.hmset(db.key(type, roomId), {
     userCount: "0"
   });
   res.redirect("/rooms/" + roomId);
@@ -17,7 +15,7 @@ exports.create = function(req, res) {
 
 exports.show = function(req, res) {
   var roomId = req.params.id;
-  redis.hgetall(toRedisKey(roomId), function (err, obj) {
+  db.redis.hgetall(db.key(type, roomId), function (err, obj) {
     if (obj !== null) {
       res.render('./room/show', obj);
     } else {
