@@ -5,6 +5,7 @@
     <link rel='stylesheet' href='/stylesheets/style.css' />
   </head>
   <body>
-    <h1>Let's create a new room</h1>
+    <h1>Welcome to your room</h1>
+    <p>You and other {{ userCount }} are browsing</p>
   </body>
 </html>

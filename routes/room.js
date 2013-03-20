@@ -1,4 +1,23 @@
+var redis = require('redis-url').connect();
+var uuid = require('node-uuid');
 
-exports.create = function(req, res){
-  res.render('./room/create');
+var toRedisKey = function(roomId) {
+  return "room." + roomId;
+}
+
+
+exports.create = function(req, res) {
+  var roomId = uuid.v4();
+  redis.hmset(toRedisKey(roomId), {
+    userCount: "0"
+  });
+  res.redirect("/rooms/" + roomId);
+};
+
+
+exports.show = function(req, res) {
+  var roomId = req.params.id;
+  redis.hgetall(toRedisKey(roomId), function (err, obj) {
+    res.render('./room/show', obj);
+  });
 };

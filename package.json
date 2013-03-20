@@ -10,6 +10,7 @@
     "hjs": "*",
     "less-middleware": "*",
     "redis": "~0.8.2",
-    "redis-url": "~0.1.0"
+    "redis-url": "~0.1.0",
+    "node-uuid": "~1.4.0"
   }
 }

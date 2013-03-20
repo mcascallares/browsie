@@ -3,11 +3,11 @@
  * Module dependencies.
  */
 
-var express = require('express')
-  , home = require('./routes/home')
-  , room = require('./routes/room')
-  , http = require('http')
-  , path = require('path');
+var express = require('express'),
+  home = require('./routes/home'),
+  room = require('./routes/room'),
+  http = require('http'),
+  path = require('path');
 
 var app = express();
 
@@ -30,6 +30,7 @@ app.configure('development', function(){
 
 app.get('/', home.index);
 app.get('/rooms/create', room.create);
+app.get('/rooms/:id', room.show);
 
 http.createServer(app).listen(app.get('port'), function(){
   console.log("Express server listening on port " + app.get('port'));
