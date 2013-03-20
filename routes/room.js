@@ -1,7 +1,6 @@
 var db = require("../db");
 var uuid = require('node-uuid');
 
-
 var type = "room";
 
 exports.create = function(req, res) {

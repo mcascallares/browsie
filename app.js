@@ -12,7 +12,6 @@ var express = require('express')
   path = require('path');
 
 
-
 app.configure(function(){
   app.set('port', process.env.PORT || 3000);
   app.set('views', __dirname + '/views');
@@ -26,13 +25,16 @@ app.configure(function(){
   app.use(express.static(path.join(__dirname, 'public')));
 });
 
+
 app.configure('development', function(){
   app.use(express.errorHandler());
 });
 
+
 app.get('/', home.index);
 app.get('/rooms/create', room.create);
 app.get('/rooms/:id', room.show);
+
 
 server.listen(app.get('port'), function(){
   console.log("Express server listening on port " + app.get('port'));
