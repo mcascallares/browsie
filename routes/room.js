@@ -18,6 +18,10 @@ exports.create = function(req, res) {
 exports.show = function(req, res) {
   var roomId = req.params.id;
   redis.hgetall(toRedisKey(roomId), function (err, obj) {
-    res.render('./room/show', obj);
+    if (obj !== null) {
+      res.render('./room/show', obj);
+    } else {
+      res.render('./room/not_found');
+    }
   });
 };
