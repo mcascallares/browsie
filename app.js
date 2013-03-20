@@ -3,13 +3,15 @@
  * Module dependencies.
  */
 
-var express = require('express'),
+var express = require('express')
+  app = express(),
+  server = require('http').createServer(app),
+  io = require('socket.io').listen(server),
   home = require('./routes/home'),
   room = require('./routes/room'),
-  http = require('http'),
   path = require('path');
 
-var app = express();
+
 
 app.configure(function(){
   app.set('port', process.env.PORT || 3000);
@@ -32,6 +34,6 @@ app.get('/', home.index);
 app.get('/rooms/create', room.create);
 app.get('/rooms/:id', room.show);
 
-http.createServer(app).listen(app.get('port'), function(){
+server.listen(app.get('port'), function(){
   console.log("Express server listening on port " + app.get('port'));
 });
